@@ -6,12 +6,11 @@
 /*   By: francysa <francysa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:11:14 by francysa          #+#    #+#             */
-/*   Updated: 2026/04/30 14:20:05 by francysa         ###   ########.fr       */
+/*   Updated: 2026/05/04 13:07:53 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
 
 void	ft_bzero(void *dest, size_t len)
 {

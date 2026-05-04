@@ -6,7 +6,7 @@
 /*   By: francysa <francysa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 09:11:46 by francysa          #+#    #+#             */
-/*   Updated: 2026/04/30 14:19:47 by francysa         ###   ########.fr       */
+/*   Updated: 2026/05/04 13:00:51 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_atoi(const char *str)
 	count = 0;
 	result = 0;
 	sign = 1;
-	while (str[count] >= 1 && str[count] <= 32)
+	while (str[count] == ' ' || (str[count] >= 9 && str[count] <= 13))
 		count++;
 	if (str[count] == '-')
 	{
@@ -43,7 +43,7 @@ int	ft_atoi(const char *str)
 
 int main(void)
 {
-	char num[10] = " -125a25";
+	char num[30] = "\t\n\r\v\f  469 \n";
 	int rest = ft_atoi(num);
 	printf("%d\n", rest);
 	return(0);

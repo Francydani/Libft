@@ -1,46 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: francysa <francysa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 16:51:34 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/04 12:45:29 by francysa         ###   ########.fr       */
+/*   Created: 2026/05/04 11:12:39 by francysa          #+#    #+#             */
+/*   Updated: 2026/05/04 13:10:13 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	unsigned char		*tdest;
-	unsigned const char	*tsrc;
-	size_t				count;
-
-	tdest = (unsigned char *)dest;
-	tsrc = (unsigned const char *)src;
-	count = 0;
-	if (tdest == tsrc || n == 0)
-		return (dest);
-	while (count < n)
-	{
-		tdest[count] = tsrc[count];
-		count++;
-	}
-	return (dest);
-}
 
 /*
+
+
+#include "libft.h"
+
+size_t ft_strlen(char *str)
+{
+	size_t count;
+
+	count = 0;
+	while (str[count])
+		count++;
+	return (count);
+}
+
+ft_strchr
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	start;
+	size_t	end;
+
+	if (!s1 || !set)
+		return (0);
+	start = 0;
+	while (s1[star] && ft_strchr(set, s1[start]))
+		start++;
+	end = ft_strlen(s1);
+	while (end > start && ft_strchr(set, s1[end - 1]))
+		end--;
+	return (ft_su)
+	
+}
+
 #include <stdio.h>
 
-int main(void)
+int	main(void)
 {
-	char src[] = "Weeknds";
-	char dest[10] = "";
 
-	ft_memcpy(dest, src, 8);
-	printf("%s\n", dest);
-	return (0);
 }
 */

@@ -6,22 +6,11 @@
 /*   By: francysa <francysa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:42:42 by francysa          #+#    #+#             */
-/*   Updated: 2026/04/30 14:21:58 by francysa         ###   ########.fr       */
+/*   Updated: 2026/05/04 11:39:38 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {

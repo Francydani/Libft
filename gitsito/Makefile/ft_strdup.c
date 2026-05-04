@@ -6,22 +6,11 @@
 /*   By: francysa <francysa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 12:12:16 by francysa          #+#    #+#             */
-/*   Updated: 2026/04/30 14:21:15 by francysa         ###   ########.fr       */
+/*   Updated: 2026/05/04 14:46:50 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strdup(const char *s)
 {
@@ -32,6 +21,8 @@ char	*ft_strdup(const char *s)
 
 	count_s = ft_strlen((char *)s);
 	newstr = malloc(count_s + 1);
+	if (newstr == 0)
+		return (0);
 	count = 0;
 	count_newstr = 0;
 	while (s[count] != '\0')
