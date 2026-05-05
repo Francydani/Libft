@@ -6,7 +6,7 @@
 /*   By: francysa <francysa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 10:23:00 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/04 14:44:15 by francysa         ###   ########.fr       */
+/*   Updated: 2026/05/04 15:13:35 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	unsigned char	*ptr;
-	size_t	count;
+	size_t			count;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);

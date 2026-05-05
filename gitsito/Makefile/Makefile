@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: francysa <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: francysa <francysa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/04 13:18:58 by francysa          #+#    #+#              #
-#    Updated: 2026/05/04 13:19:00 by francysa         ###   ########.fr        #
+#    Updated: 2026/05/05 10:23:51 by francysa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
 	ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c \
 	ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c \
-	ft_substr.c ft_strjoin.c 
+	ft_substr.c ft_strjoin.c ft_strtrim.c
 OBJ = $(SRC:.c=.o)
 
 INCLUDE = libft.h
