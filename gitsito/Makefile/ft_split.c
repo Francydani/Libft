@@ -13,6 +13,42 @@
 
 #include "libft.h"
 
+size_t	ft_strlen(const char *s)
+{
+	size_t	count;
+
+	count = 0;
+	while (s[count])
+		count++;
+	return (count);
+}
+
+char    *ft_substr(char const *s, unsigned int start, size_t len)
+{
+    size_t    count;
+    char    *ptr;
+    size_t    longitud_s;
+
+    if (!s)
+        return (0);
+    longitud_s = ft_strlen(s);
+    if (start >= longitud_s)
+        len = 0;
+    else if (len > longitud_s - start)
+        len = longitud_s - start;
+    ptr = malloc(sizeof(char) * (len + 1));
+    if (ptr == NULL)
+        return (0);
+    count = 0;
+    while (count < len && s[start + count] != '\0')
+    {
+        ptr[count] = s[start + count];
+        count++;
+    }
+    ptr[count] = '\0';
+    return (ptr);
+}
+
 static int	ft_contador_palabras(char const *s, char delimiter)
 {
 	int	i;
@@ -37,46 +73,41 @@ static int	ft_contador_palabras(char const *s, char delimiter)
 	return (contador);
 }
 
-/*
-static int	ft_mallocs(char const *s, char *tokens)
+static void ft_liberar_todo(char **res, size_t guardadas)
 {
-	int	len;
-	char **res;
-	
-	ft_contador_palabras(s, delimiter)
-	res = malloc(sizeof(char) * (estado + 1))
-	len = ft_strlen(s);
-
+    while (guardadas > 0)
+    {
+        guardadas--;
+        free(res[guardadas]);
+    }
+    free(res);
 }
- 
 
-static size_t	ft_count_tokens(char const *s, char delimiter)
+static char	**ft_relleno(char **res, char const *s, char c)
 {
-	char	*tokens;
-	size_t	count_tokens;
-	size_t	count;
+	size_t	i;
+	size_t	j;
+	size_t	start;
 
-	count = 0;
-	count_tokens = 0;
-	while(*s)
+	i = 0;
+	j = 0;
+	while(s[i])
 	{
-		if (s[count] == delimiter)
-			count++;
-		else
-			tokens[count_tokens++] = s[count++];
+		while (s[i] == c)
+			i++;
+		if (s[i])
+		{
+			start = i; // el inicio de la palabra es igual i
+			while (s[i] && s[i] != c)
+				i++;
+			res[j] = ft_substr(s, start, i - start);
+			if (!res[j])
+				return (ft_liberar_todo(res, j), NULL);
+			j++;
+		}
 	}
-	return(&tokens[count_tokens]);
-}
-*/
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-
-static char	*ft_relleno(char const *s, unsigned int estado, size_t contador)
-{
-	
-	while()
-	{
-		
-	}
+	res [j] = NULL;
+	return (res);
 }
 
 char **ft_split(char const *s, char c)
@@ -84,23 +115,29 @@ char **ft_split(char const *s, char c)
 	char	**res;
 	int	n_palabras;
 	
+	if (!s)
+		return (NULL);
 	n_palabras = ft_contador_palabras(s, c);
 	res = malloc(sizeof(char *) * (n_palabras + 1));
-    if (!res)
-        return (NULL);
-	***
-	return (res);	
+	if (!res)
+		return (NULL);
+	return (ft_relleno(res, s, c));	
 }
 
 #include <stdio.h>
 
 int main(void)
 {
-	char *string  = "_Hola__Mundo";
-	char delimitador = '_';
-	char	**rest = ft_split(string, delimitador);
+    char    **r = ft_split("_Hola__Mundo", '_');
+    int        i = 0;
 
-	if (rest)
-		printf("Resultado: %d\n",ft_contador_palabras(string, delimitador));
-	return (0);
+    if (!r)
+        return (1);
+    while (r[i])
+    {
+        printf("%s\n", r[i]);
+        free(r[i++]);
+    }
+    free(r);
+    return (0);
 }
