@@ -13,6 +13,7 @@
 
 #include "libft.h"
 
+/*
 size_t	ft_strlen(const char *s)
 {
 	size_t	count;
@@ -48,6 +49,7 @@ char    *ft_substr(char const *s, unsigned int start, size_t len)
     ptr[count] = '\0';
     return (ptr);
 }
+	*/
 
 static int	ft_contador_palabras(char const *s, char delimiter)
 {
@@ -123,7 +125,7 @@ char **ft_split(char const *s, char c)
 		return (NULL);
 	return (ft_relleno(res, s, c));	
 }
-
+/*
 #include <stdio.h>
 
 int main(void)
@@ -141,3 +143,4 @@ int main(void)
     free(r);
     return (0);
 }
+*/

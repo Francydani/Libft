@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int contar_digitos(int n)
+static int contar_digitos(int n)
 {
 	int contador;
 
@@ -43,6 +43,7 @@ char *ft_itoa(int n)
 	return (ptr);
 }
 
+/*
 #include <stdio.h>
 
 int	main(void)
@@ -54,3 +55,4 @@ int	main(void)
 	free(res);
 	return (0);
 }
+*/
