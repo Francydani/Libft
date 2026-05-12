@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 12:12:26 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/12 16:44:32 by francysa         ###   ########.fr       */
+/*   Created: 2026/05/11 10:30:34 by francysa          #+#    #+#             */
+/*   Updated: 2026/05/12 16:43:00 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+t_list	*ft_lstnew(void *content)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
-}
+	t_list	*new_node;
 
+	new_node = (t_list *)malloc(sizeof(t_list));
+	if (!new_node)
+		return (0);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
+}
 /*
 #include <stdio.h>
 
 int	main(void)
 {
-	int c = 'a';
-	
-	printf("Before: %c\n", c);
-	printf("%c\n", ft_toupper(c));
+	t_list *nodo =ft_lstnew("Cat");
+	printf("Result: %s\n", (char *)nodo->content);
+	free(nodo);
 	return (0);
 }
 */

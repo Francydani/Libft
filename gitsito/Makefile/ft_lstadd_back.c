@@ -1,34 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 12:12:26 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/12 16:44:32 by francysa         ###   ########.fr       */
+/*   Created: 2026/05/12 09:17:18 by francysa          #+#    #+#             */
+/*   Updated: 2026/05/12 16:42:42 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
+	t_list	*ultima;
+
+	if (*lst == NULL)
+	{
+		*lst = new;
+	}
 	else
-		return (c);
+	{
+		ultima = ft_lstlast(*lst);
+		ultima->next = new;
+	}
 }
 
-/*
-#include <stdio.h>
+/* #include <stdio.h>
 
 int	main(void)
 {
-	int c = 'a';
-	
-	printf("Before: %c\n", c);
-	printf("%c\n", ft_toupper(c));
+	t_list	n1, n2;
+	t_list	new;
+	t_list	*head;
+
+	n1.content = "One";
+	n1.next = &n2;
+	n2.content = "Two";
+	n2.next = NULL;
+
+	new.content = "Three";
+	new.next = NULL;
+	head = &n1;
+	ft_lstadd_back(&head, &new);
+
+	printf("%s\n", (char*)ft_lstlast(head)->content);
 	return (0);
-}
-*/
+} */

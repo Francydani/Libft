@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francysa <francysa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 15:00:53 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/04 13:07:30 by francysa         ###   ########.fr       */
+/*   Updated: 2026/05/12 16:44:00 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 /*
 #include <stdio.h>
 
-int main(void)
+int main(void) 
 {
 	char	dst[20] = "Hello"; 
 	char	src[] = " World!";

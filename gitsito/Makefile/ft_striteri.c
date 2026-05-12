@@ -1,34 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 12:12:26 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/12 16:44:32 by francysa         ###   ########.fr       */
+/*   Created: 2026/05/11 09:41:06 by francysa          #+#    #+#             */
+/*   Updated: 2026/05/12 16:43:54 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
+	unsigned int	count;
+
+	if (!s || !f)
+		return ;
+	count = 0;
+	while (s[count] != '\0')
+	{
+		f(count, &s[count]);
+		count++;
+	}
+}
+/*
+void    add_x(unsigned int i, char *c)
+{
+	if (i % 2 == 0)
+		*c = 'X';
 }
 
-/*
 #include <stdio.h>
 
-int	main(void)
+int main (void)
 {
-	int c = 'a';
-	
-	printf("Before: %c\n", c);
-	printf("%c\n", ft_toupper(c));
+	char string[] = "123456";
+
+	printf("before: %s\n", string);
+	ft_striteri(string, add_x);
+	printf("after: %s\n", string);
 	return (0);
 }
-*/
+	*/

@@ -1,34 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 12:12:26 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/12 16:44:32 by francysa         ###   ########.fr       */
+/*   Created: 2026/05/11 09:50:38 by francysa          #+#    #+#             */
+/*   Updated: 2026/05/12 16:43:28 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ft_toupper(int c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
-}
-
 /*
-#include <stdio.h>
+#include <unistd.h>
 
-int	main(void)
+void ft_putchar_fd(char c, int fd)
 {
-	int c = 'a';
-	
-	printf("Before: %c\n", c);
-	printf("%c\n", ft_toupper(c));
-	return (0);
+	write(fd, &c, 1);
 }
 */
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+	}
+	ft_putchar_fd((n % 10) + '0', fd);
+}
+/*
+int main(void)
+{
+	int num = 125;
+	ft_putnbr_fd(num, 1);
+	ft_putchar_fd('\n', 1);
+	return(0);
+}
+	*/

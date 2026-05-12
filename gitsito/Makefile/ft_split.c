@@ -3,104 +3,142 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francysa <francysa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 10:29:13 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/05 15:58:31 by francysa         ###   ########.fr       */
+/*   Updated: 2026/05/12 16:43:36 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-static int	ft_contador_palabras(char const *s, char delimiter)
-{
-	int	i;
-	int contador;
-	int estado;
-	
-	i = 0;
-	contador = 0;
-	estado = 0;
-
-	while (s[i])
-	{
-		if (s[i] == delimiter)
-			estado = 0;
-		else if (estado == 0)
-		{
-			estado = 1;
-			contador++;
-		}
-	i++;
-	}
-	return (contador);
-}
-
 /*
-static int	ft_mallocs(char const *s, char *tokens)
+size_t	ft_strlen(const char *s)
 {
-	int	len;
-	char **res;
-	
-	ft_contador_palabras(s, delimiter)
-	res = malloc(sizeof(char) * (estado + 1))
-	len = ft_strlen(s);
-
-}
- 
-
-static size_t	ft_count_tokens(char const *s, char delimiter)
-{
-	char	*tokens;
-	size_t	count_tokens;
 	size_t	count;
 
 	count = 0;
-	count_tokens = 0;
-	while(*s)
+	while (s[count])
+		count++;
+	return (count);
+}
+
+char    *ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t    count;
+	char    *ptr;
+	size_t    longitud_s;
+
+	if (!s)
+		return (0);
+	longitud_s = ft_strlen(s);
+	if (start >= longitud_s)
+		len = 0;
+	else if (len > longitud_s - start)
+		len = longitud_s - start;
+	ptr = malloc(sizeof(char) * (len + 1));
+	if (ptr == NULL)
+		return (0);
+	count = 0;
+	while (count < len && s[start + count] != '\0')
 	{
-		if (s[count] == delimiter)
-			count++;
-		else
-			tokens[count_tokens++] = s[count++];
+		ptr[count] = s[start + count];
+		count++;
 	}
-	return(&tokens[count_tokens]);
+	ptr[count] = '\0';
+	return (ptr);
 }
 */
-char	*ft_substr(char const *s, unsigned int start, size_t len)
 
-static char	*ft_relleno(char const *s, unsigned int estado, size_t contador)
+static int	ft_word_counter(char const *s, char delimiter)
 {
-	
-	while()
+	int	i;
+	int	count;
+	int	key;
+
+	i = 0;
+	count = 0;
+	key = 0;
+	while (s[i])
 	{
-		
+		if (s[i] == delimiter)
+			key = 0;
+		else if (key == 0)
+		{
+			key = 1;
+			count++;
+		}
+		i++;
 	}
+	return (count);
 }
 
-char **ft_split(char const *s, char c)
+static void	ft_free(char **res, size_t word)
+{
+	while (word > 0)
+	{
+		word--;
+		free(res[word]);
+	}
+	free(res);
+}
+
+static char	**ft_fill(char **res, char const *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	size_t	start;
+
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i])
+		{
+			start = i;
+			while (s[i] && s[i] != c)
+				i++;
+			res[j] = ft_substr(s, start, i - start);
+			if (!res[j])
+				return (ft_free(res, j), NULL);
+			j++;
+		}
+	}
+	res [j] = NULL;
+	return (res);
+}
+
+char	**ft_split(char const *s, char c)
 {
 	char	**res;
-	int	n_palabras;
-	
-	n_palabras = ft_contador_palabras(s, c);
-	res = malloc(sizeof(char *) * (n_palabras + 1));
-    if (!res)
-        return (NULL);
-	***
-	return (res);	
-}
+	int		n_word;
 
+	if (!s)
+		return (NULL);
+	n_word = ft_word_counter(s, c);
+	res = malloc(sizeof(char *) * (n_word + 1));
+	if (!res)
+		return (NULL);
+	return (ft_fill(res, s, c));
+}
+/*
 #include <stdio.h>
 
 int main(void)
 {
-	char *string  = "_Hola__Mundo";
-	char delimitador = '_';
-	char	**rest = ft_split(string, delimitador);
+	char    **r = ft_split("_Hello__World", '_');
+	int        i = 0;
 
-	if (rest)
-		printf("Resultado: %d\n",ft_contador_palabras(string, delimitador));
+	if (!r)
+		return (1);
+	while (r[i])
+	{
+		printf("%s\n", r[i]);
+		free(r[i++]);
+	}
+	free(r);
 	return (0);
 }
+*/

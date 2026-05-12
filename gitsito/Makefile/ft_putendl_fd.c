@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 12:12:26 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/12 16:44:32 by francysa         ###   ########.fr       */
+/*   Created: 2026/05/11 09:49:32 by francysa          #+#    #+#             */
+/*   Updated: 2026/05/12 16:43:24 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ft_toupper(int c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
-}
-
 /*
-#include <stdio.h>
+#include <unistd.h>
 
-int	main(void)
+size_t	ft_strlen(const char *s)
 {
-	int c = 'a';
-	
-	printf("Before: %c\n", c);
-	printf("%c\n", ft_toupper(c));
-	return (0);
+	size_t	count;
+
+	count = 0;
+	while (s[count])
+		count++;
+	return (count);
 }
 */
+void	ft_putendl_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
+}
+/*
+int main(void)
+{
+	char    *str = "Hello World";
+	ft_putendl_fd(str, 1);
+	return (0);
+}
+	*/

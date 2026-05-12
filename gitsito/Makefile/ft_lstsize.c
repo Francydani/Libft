@@ -1,34 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 12:12:26 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/12 16:44:32 by francysa         ###   ########.fr       */
+/*   Created: 2026/05/11 11:39:56 by francysa          #+#    #+#             */
+/*   Updated: 2026/05/12 16:43:03 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+int	ft_lstsize(t_list *lst)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
+	int	count;
+
+	count = 0;
+	while (lst)
+	{
+		count++;
+		lst = lst->next;
+	}
+	return (count);
 }
 
-/*
-#include <stdio.h>
+/* #include <stdio.h>
 
-int	main(void)
+int main(void)
 {
-	int c = 'a';
-	
-	printf("Before: %c\n", c);
-	printf("%c\n", ft_toupper(c));
+	t_list n1, n2;
+	t_list *head;
+
+	n1.content = "One";
+	n1.next = &n2;
+	n2.content = "Two";
+	n2.next = NULL;
+	head = &n1;
+	int	size = ft_lstsize(head);
+
+	printf("Number nodos: %d\n", size);
 	return (0);
-}
-*/
+} */
