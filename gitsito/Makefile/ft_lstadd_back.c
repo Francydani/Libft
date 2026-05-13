@@ -6,7 +6,7 @@
 /*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 09:17:18 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/12 16:42:42 by francysa         ###   ########.fr       */
+/*   Updated: 2026/05/13 11:26:54 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*ultima;
 
+	if (!lst)
+		return ;
 	if (*lst == NULL)
 	{
 		*lst = new;

@@ -6,7 +6,7 @@
 /*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 15:16:23 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/12 16:36:37 by francysa         ###   ########.fr       */
+/*   Updated: 2026/05/13 11:29:05 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	while (lst)
 	{
 		content = f(lst->content);
-		new_nodo = ft_lstnew(f(lst->content));
-		lst = lst->next;
+		new_nodo = ft_lstnew(content);
 		if (!new_nodo)
 		{
 			del(content);
