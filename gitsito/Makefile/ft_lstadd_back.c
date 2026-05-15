@@ -6,7 +6,7 @@
 /*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 09:17:18 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/13 11:26:54 by francysa         ###   ########.fr       */
+/*   Updated: 2026/05/13 14:34:04 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,4 @@ int	main(void)
 
 	printf("%s\n", (char*)ft_lstlast(head)->content);
 	return (0);
-} */
+}  */

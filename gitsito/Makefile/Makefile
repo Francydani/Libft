@@ -6,7 +6,7 @@
 #   By: francysa <francysa@student.42urduliz.com>    +#+  +:+       +#+        #
 #                                                  +#+#+#+#+#+   +#+           #
 #   Created: 2026/05/04 13:18:58 by francysa            #+#    #+#             #
-#   Updated: 2026/05/12 16:37:44 by francysa           ###   ########.fr       #
+#   Updated: 2026/05/13 13:00:29 by francysa           ###   ########.fr       #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,6 @@ RM = rm -f
 .PHONY: all clean fclean re
 
 all: $(NAME)
-
-bonus: $(BONUS)
 
 $(NAME): $(OBJ)
 	$(AR) $@ $^

@@ -6,7 +6,7 @@
 /*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 10:23:00 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/12 16:42:17 by francysa         ###   ########.fr       */
+/*   Updated: 2026/05/13 14:50:43 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	unsigned char	*ptr;
 	size_t			count;
 
-	if (nmemb == 0 || size == 0)
+	if (size && nmemb > 2147483647 / size)
 		return (NULL);
 	ptr = malloc(nmemb * size);
 	if (ptr == NULL)
 		return (NULL);
 	count = 0;
-	while (count < nmemb)
+	while (count < (nmemb * size))
 	{
 		ptr[count] = 0;
 		count++;

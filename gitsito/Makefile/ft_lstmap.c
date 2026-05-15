@@ -6,7 +6,7 @@
 /*   By: francysa <francysa@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 15:16:23 by francysa          #+#    #+#             */
-/*   Updated: 2026/05/13 11:29:05 by francysa         ###   ########.fr       */
+/*   Updated: 2026/05/13 14:38:26 by francysa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	main(void)
 	t_list	*list_B = NULL;
 
 	ft_lstadd_back(&list_A, ft_lstnew(ft_strdup("Cat")));
-	ft_lstadd_back(&list_A, ft_lstnew(ft_strdup("Dog")));
 
 	list_B = ft_lstmap(list_A, ft_add, free);
 
