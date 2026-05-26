@@ -15,24 +15,40 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-char *get_next_line(int fd)
+char	*ft_obtener_linea(char linea_sin_leer)
 {
-	char *linea_sig;
+	size_t	i;
+	char	*temporal;
+
+	i = ft_strlen(linea_sin_leer);
+	temporal = malloc(i);
+	return (temporal);
+}
+
+char	*get_next_line(int fd)
+{
+	char		*buffer_temporal;
 	static char	*linea_sin_leer;
-	int	byts_leidos;
+	size_t		byts_leidos;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	linea_sin_leer = read(fd, linea_sin_leer, &byts_leidos);
-	if (!linea_sin_leer)
-		return (NULL);
-
-
-	if (linea_sin_leer < '\n')
+	buffer_temporal = malloc(BUFFER_SIZE + 1);
+	if (buffer_temporal == NULL)
+		return (0);
+	while (buffer_temporal)
 	{
-        ft_putstr_len(linea_sin_leer);
+		byts_leidos = read(fd, buffer_temporal, BUFFER_SIZE);
+		if (byts_leidos <= 0)
+			return (NULL);
+		buffer_temporal[byts_leidos] = '\0';
+		if (!linea_sin_leer)
+			linea_sin_leer = ft_strdup("");
+		while (!ft_strchr(linea_sin_leer, '\n') && bytes_leidos > 0)
+			linea_sin_leer = ft_strjoin(linea_sin_leer, buffer_temporal);
 	}
-    return (0);
+	free (buffer_temporal);
+	return (ft_obtener_linea(linea_sin_leer));
 }
 
 int	main(void)
@@ -43,14 +59,6 @@ int	main(void)
 
 	fd = open("archivo.txt", O_RDONLY);
 	bytes_leidos = get_next_line(fd);
-
-	while (bytes_leidos >= '\0')
-	{
-		bytes_leidos++;
-	}
-
-	buffer[bytes_leidos] = '\0';
-	printf("Leídos %zd bytes. Contenido: %s\n", bytes_leidos, buffer);
 	close(fd);
 
 	return (0);
