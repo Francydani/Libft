@@ -102,6 +102,7 @@ int	main(void)
 {
 	int		fd;
 	char	*linea;
+	int	contador;
 
 	fd = open("archivo.txt", O_RDONLY);
 	if (fd < 0)
@@ -109,11 +110,15 @@ int	main(void)
 		printf("Error al abrir archivo.txt\n");
 		return (1);
 	}
-	while ((linea = get_next_line(fd)) != NULL)
+	contador = 0;
+	while (contador < 3)
 	{
+		linea = get_next_line(fd);
 		printf("%s", linea);
-		free (linea); 
+		free (linea);
+		contador++;
 	}
 	close(fd);
 	return (0);
 }
+
