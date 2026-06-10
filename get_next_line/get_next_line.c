@@ -14,91 +14,90 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-char	*ft_obtener_linea(char *linea_sin_leer)
+char	*ft_obtain_line(char *line)
 {
 	size_t	i;
-	char	*temporal;
+	char	*tem;
 
 	i = 0;
-	if (!linea_sin_leer || !linea_sin_leer[i])
+	if (!line || !line[i])
 		return (NULL);
-	while (linea_sin_leer[i] && linea_sin_leer[i] != '\n')
+	while (line[i] && line[i] != '\n')
 		i++;
-	if (linea_sin_leer[i] == '\n')
-		temporal = malloc(i + 2);
+	if (line[i] == '\n')
+		tem = malloc(i + 2);
 	else
-		temporal = malloc(i + 1);
-	if (!temporal)
+		tem = malloc(i + 1);
+	if (!tem)
 		return (NULL);
 	i = 0;
-	while (linea_sin_leer[i] && linea_sin_leer[i] != '\n')
+	while (line[i] && line[i] != '\n')
 	{
-		temporal[i] = linea_sin_leer[i];
+		tem[i] = line[i];
 		i++;
 	}
-	if (linea_sin_leer[i] == '\n')
-		temporal[i++] = '\n';
-	temporal[i] = '\0';
-	return (temporal);
+	if (line[i] == '\n')
+		tem[i++] = '\n';
+	tem[i] = '\0';
+	return (tem);
 }
 
-char	*ft_clean(char *linea_sin_leer)
+char	*ft_clean(char *line)
 {
 	size_t	i;
 	size_t	j;
-	char	*nueva;
+	char	*new;
 
 	i = 0;
 	j = 0;
-	if (!linea_sin_leer)
+	if (!line)
 		return (NULL);
-	while (linea_sin_leer[i] && linea_sin_leer[i] != '\n')
+	while (line[i] && line[i] != '\n')
 		i++;
-	if (!linea_sin_leer[i])
+	if (!line[i])
 	{
-		free(linea_sin_leer);
+		free(line);
 		return (NULL);
 	}
-	nueva = malloc(ft_strlen(linea_sin_leer) - i + 1);
-	if (!nueva)
+	new = malloc(ft_strlen(line) - i + 1);
+	if (!new)
 		return (NULL);
 	i++;
-	while (linea_sin_leer[i])
-		nueva[j++] = linea_sin_leer[i++];
-	nueva[j] = '\0';
-	free(linea_sin_leer);
-	return (nueva);
+	while (line[i])
+		new[j++] = line[i++];
+	new[j] = '\0';
+	free(line);
+	return (new);
 }
 
 char	*get_next_line(int fd)
 {
 	char		*buffer;
-	char		*linea_final;
-	static char	*linea_sin_leer;
-	long		byts_leidos;
+	char		*line_finish;
+	static char	*line;
+	ssize_t		byts;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (buffer == NULL)
 		return (NULL);
-	byts_leidos = 1;
-	while (!ft_strchr(linea_sin_leer, '\n') && byts_leidos > 0)
+	byts = 1;
+	while (!ft_strchr(line, '\n') && byts > 0)
 	{
-		byts_leidos = read(fd, buffer, BUFFER_SIZE);
-		if (byts_leidos == -1)
+		byts = read(fd, buffer, BUFFER_SIZE);
+		if (byts == -1)
 			return (free(buffer), NULL);
-		buffer[byts_leidos] = '\0';
-		linea_sin_leer = ft_strjoin(linea_sin_leer, buffer);
+		buffer[byts] = '\0';
+		line = ft_strjoin(line, buffer);
 	}
 	free(buffer);
-	linea_final = ft_obtener_linea(linea_sin_leer);
-	linea_sin_leer = ft_clean(linea_sin_leer);
-	return (linea_final);
+	line_finish = ft_obtain_line(line);
+	line = ft_clean(line);
+	return (line_finish);
 }
 
-
-int	main(void)
+/*int	main(void)
 {
 	int		fd;
 	char	*linea;
@@ -111,7 +110,7 @@ int	main(void)
 		return (1);
 	}
 	contador = 0;
-	while (contador < 3)
+	while (contador < 2)
 	{
 		linea = get_next_line(fd);
 		printf("%s", linea);
@@ -120,5 +119,5 @@ int	main(void)
 	}
 	close(fd);
 	return (0);
-}
+}*/
 
