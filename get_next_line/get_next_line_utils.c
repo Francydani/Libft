@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *s)
 
 char	*ft_strchr(const char *string, int c)
 {
-	int	count;
+	size_t	count;
 
 	count = 0;
 	if (!string)
